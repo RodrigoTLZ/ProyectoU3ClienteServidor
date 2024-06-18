@@ -25,7 +25,7 @@
             </Frame>
 
 
-            <Label Text="{Binding DepartamentosViewModel.Error}" TextColor="Red" FontSize="15" Margin="5"></Label>
+            <Label Text="{Binding DepartamentosViewModel.Error}" TextColor="Red" FontSize="Small" Margin="5"></Label>
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Button BackgroundColor="#050C9C" Text="Cancelar" Margin="5,10" WidthRequest="170" FontSize="18" Command="{Binding DepartamentosViewModel.VerDepartamentosCommand}" HeightRequest="50"/>

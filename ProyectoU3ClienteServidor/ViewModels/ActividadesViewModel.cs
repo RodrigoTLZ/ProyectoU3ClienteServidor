@@ -105,7 +105,7 @@ namespace ProyectoU3ClienteServidor.ViewModels
             int iddepa = await loginService.GetDepartmentoId();
             string token = await loginService.GetToken();
             cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            var response = await cliente.GetFromJsonAsync<List<DepartamentoDTO>>($"api/DepartamentosAPI/ObtenerDepartamentos");
+            var response = await cliente.GetFromJsonAsync<List<DepartamentoDTO>>($"api/DepartamentosAPI/ObtenerDepartamentosBasico");
             if (response != null)
             {
                 if (response.Any(x => x.Id == iddepa) == false)
@@ -154,7 +154,7 @@ namespace ProyectoU3ClienteServidor.ViewModels
             int iddepa = await loginService.GetDepartmentoId();
             string token = await loginService.GetToken();
             cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            var response = await cliente.GetFromJsonAsync<List<DepartamentoDTO>>($"api/DepartamentosAPI/ObtenerDepartamentos");
+            var response = await cliente.GetFromJsonAsync<List<DepartamentoDTO>>($"api/DepartamentosAPI/ObtenerDepartamentosBasico");
             if (response != null)
             {
                 if (response.Any(x => x.Id == iddepa) == false)
@@ -181,7 +181,7 @@ namespace ProyectoU3ClienteServidor.ViewModels
             int iddepa = await loginService.GetDepartmentoId();
             string token = await loginService.GetToken();
             cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            var response = await cliente.GetFromJsonAsync<List<DepartamentoDTO>>($"api/DepartamentosAPI/ObtenerDepartamentos");
+            var response = await cliente.GetFromJsonAsync<List<DepartamentoDTO>>($"api/DepartamentosAPI/ObtenerDepartamentosBasico");
             if (response != null)
             {
                 if (response.Any(x => x.Id == iddepa) == false)

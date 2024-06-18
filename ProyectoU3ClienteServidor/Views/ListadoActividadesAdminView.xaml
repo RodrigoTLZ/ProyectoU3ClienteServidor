@@ -60,7 +60,12 @@
 
                                     
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Margin="0,20,0,0">
-                                    <Label HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalTextAlignment="Center" Text="{Binding FechaRealizacion, StringFormat='{0:dd/MM/yyyy}'}"/>
+                                            
+                                        <StackLayout VerticalOptions="Center">
+                                            <Label HorizontalTextAlignment="Start" HorizontalOptions="Start">Fecha de la actividad:</Label>
+                                            <Label HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalTextAlignment="Center" Text="{Binding FechaRealizacion, StringFormat='{0:dd/MM/yyyy}'}"/>
+                                        </StackLayout>
+                                            
                                         <Frame HasShadow="True" BackgroundColor="White" BorderColor="#DFE1DB" CornerRadius="30" HorizontalOptions="EndAndExpand">
                                             <StackLayout HorizontalOptions="End" Orientation="Horizontal" HeightRequest="25">
                                                 <ImageButton HeightRequest="20" WidthRequest="20" Source="editar.png" Margin="0,0,5,0" Command="{Binding Source={x:Reference Name=activitiesCollectionView}, Path=BindingContext.ActividadesViewModel.VerEditarActividadCommand}"

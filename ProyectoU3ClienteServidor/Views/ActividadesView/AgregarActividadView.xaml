@@ -24,7 +24,7 @@
                     <DatePicker Date="{Binding Actividad.FechaRealizacion}" />
                 </StackLayout>
             </Frame>
-            <Label Text="{Binding Error}" TextColor="Red" FontSize="15" Margin="5,5,5,10"></Label>
+            <Label Text="{Binding Error}" TextColor="Red" FontSize="Small" Margin="5,5,5,10"></Label>
 
             <StackLayout Orientation="Horizontal" Margin="10,0,0,5" HorizontalOptions="Center">
                 <Button CornerRadius="20" BackgroundColor="#050C9C" Text="&#128269; Seleccionar Imagen" Clicked="Button_Clicked" VerticalOptions="End" HorizontalOptions="Start"/>

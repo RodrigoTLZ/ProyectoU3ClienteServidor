@@ -28,6 +28,12 @@
                                     <Label Margin="0,5,0,0" FontFamily="Arial" Text="{Binding Titulo}" FontSize="20" FontAttributes="Bold" />
                                     <Label Text="{Binding Descripcion}" FontSize="13" MaxLines="3" Margin="0,7,0,10" LineBreakMode="CharacterWrap" LineHeight="1.1" />
 
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Margin="0,0,5,0" WidthRequest="20" Source="usuario.png"></Image>
+                                        <Label VerticalTextAlignment="Center" VerticalOptions="Center" Text="{Binding NombreDepartamento}" FontSize="13">
+                                        </Label>
+                                    </StackLayout>
+
                                     <Image HeightRequest="190" WidthRequest="335" Margin="0,15,0,0">
                                         <Image.Triggers>
                                             <DataTrigger TargetType="Image" Binding="{Binding ImagenSource}" Value="(null)">
@@ -49,9 +55,16 @@
                                     </Image>
 
 
+                                    
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Margin="0,20,0,0">
-                                        <Label HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalTextAlignment="Center" Text="{Binding FechaRealizacion, StringFormat='{0:dd/MM/yyyy}'}"/>
-                                        <Frame HasShadow="True" BackgroundColor="White" BorderColor="#DFE1DB" CornerRadius="30" HorizontalOptions="EndAndExpand">
+                                        <StackLayout VerticalOptions="Center">
+                                            <Label HorizontalTextAlignment="Start" HorizontalOptions="Start">Fecha de la actividad:</Label>
+                                            <Label HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalTextAlignment="Center" Text="{Binding FechaRealizacion, StringFormat='{0:dd/MM/yyyy}'}"/>
+
+                                        </StackLayout>
+                                   
+
+                                    <Frame HasShadow="True" BackgroundColor="White" BorderColor="#DFE1DB" CornerRadius="30" HorizontalOptions="EndAndExpand">
                                             <StackLayout HorizontalOptions="End" Orientation="Horizontal" HeightRequest="25">
                                                 <ImageButton HeightRequest="20" WidthRequest="20" Source="editar.png" Margin="0,0,5,0" Command="{Binding Source={x:Reference Name=activitiesCollectionView}, Path=BindingContext.ActividadesViewModel.VerEditarActividadCommand}"
                                       CommandParameter="{Binding Id}" />

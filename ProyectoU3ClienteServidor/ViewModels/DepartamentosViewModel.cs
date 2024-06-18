@@ -65,6 +65,7 @@ namespace ProyectoU3ClienteServidor.ViewModels
         [RelayCommand]
         public void VerDepartamentos()
         {
+            Error = "";
             ActualizarDepartamentos();
             Shell.Current.GoToAsync("//ListadoDepartamentos");
         }
