@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoU3ClienteServidor.Views.ActividadesView.EditarActividadView"
+             Title="Editar actividad">
+    <ScrollView>
+        <StackLayout Margin="15">
+            <Frame BorderColor="#2B0B98" BackgroundColor="White" CornerRadius="20" HasShadow="True" Padding="10" Margin="5,5">
+                <StackLayout Margin="10">
+                    <!-- Título de la actividad -->
+                    <Label Text="Titulo:"  FontFamily="Arial" FontAttributes="Bold" FontSize="Title"></Label>
+                    <Entry Text="{Binding ActividadSeleccionada.Titulo}" Placeholder="Título de la actividad" x:Name="titleEntry" Margin="0,0,0,10"  FontSize="15"/>
+
+
+                    <!-- Descripción de la actividad -->
+                    <Label Text="Descripción:"  FontFamily="Arial" FontAttributes="Bold" FontSize="Title"></Label>
+                    <Editor Margin="0,0,0,10" Text="{Binding ActividadSeleccionada.Descripcion}" Placeholder="Descripción de la actividad" x:Name="descriptionEditor" HeightRequest="100" />
+
+                    <!-- Fecha de creación de la actividad -->
+                    <Label Text="Fecha:" FontFamily="Arial" FontAttributes="Bold" FontSize="Title"></Label>
+                    <DatePicker Date="{Binding ActividadSeleccionada.FechaRealizacion}" />
+                    <Entry IsVisible="False" x:Name="Imgbase64" Text="{Binding NuevaImagen}"/>
+                </StackLayout>
+            </Frame>
+            <Label Text="{Binding Error}" TextColor="Red" FontAttributes="Bold" FontSize="Small"></Label>
+
+            <StackLayout Orientation="Horizontal" Margin="10,0,0,5" HorizontalOptions="Center">
+                <Button Text="Seleccionar Imagen" Clicked="Button_Clicked" VerticalOptions="End" HorizontalOptions="Start"  CornerRadius="20" BackgroundColor="#050C9C"/>
+            </StackLayout>
+            <Image x:Name="myImage" HeightRequest="200" WidthRequest="300" Source="{Binding ActividadSeleccionada.ImagenSource}"></Image>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button BackgroundColor="#050C9C" Text="Cancelar" Command="{Binding CancelarCommand}" Margin="5,10" WidthRequest="170"/>
+                <Button BackgroundColor="#050C9C" Text="Guardar" Command="{Binding EditarCommand}" Margin="5,10" WidthRequest="170"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

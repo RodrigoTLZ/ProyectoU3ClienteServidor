@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoU3ClienteServidor.Views.LoginView"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Background>
+        <LinearGradientBrush>
+            <GradientStop Color="#050C9C"
+                          Offset="0.1" />
+            <GradientStop Color="#3572EF"
+                          Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+
+    <ContentPage.Content>
+        <Frame BackgroundColor="#ffffff"
+         CornerRadius="20"
+         HasShadow="True"
+         Padding="0"
+         Margin="0,20"
+         WidthRequest="345"
+        HeightRequest="400">
+
+            <StackLayout Padding="10" Spacing="10" VerticalOptions="Center" Margin="20,0,20,10">
+                <!-- Título de la página de inicio de sesión -->
+                <Label Text="¡Bienvenido!"
+                FontSize="40"
+                FontAttributes="Bold"
+                TextColor="#050C9C"
+                HorizontalOptions="Center" Margin="0,0,0,30" FontFamily="Arial black"/>
+
+                <Frame BackgroundColor="White" BorderColor="Black" Padding="3" 
+            HorizontalOptions="FillAndExpand" CornerRadius="30">
+                    <!-- Campo de entrada para el nombre de usuario -->
+                    <Entry Placeholder="Usuario"
+                    x:Name="usernameEntry"
+                    Keyboard="Default"
+                    ReturnType="Next"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="10,0,10,1"     Background="Transparent"
+                    Text="{Binding LoginViewModel.Username}"/>
+                </Frame>
+
+                <Frame BackgroundColor="White" BorderColor="Black" Padding="3" 
+                HorizontalOptions="FillAndExpand" CornerRadius="30">
+                    <!-- Campo de entrada para el nombre de usuario -->
+                    <Entry Placeholder="Contraseña"
+                    x:Name="passwordEntry"
+                    IsPassword="True"
+                    Keyboard="Default"
+                    ReturnType="Go"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    VerticalOptions="Center"
+                    Margin="10,0,10,1"
+                    Text="{Binding LoginViewModel.Password}"/>
+                </Frame>
+
+                <Label Text="{Binding LoginViewModel.Error}" TextColor="Red" HorizontalOptions="Center" />
+                <!-- Botón para iniciar sesión -->
+                <Button Text="Iniciar sesión" Margin="0,5,0,0" BackgroundColor="#3572EF"
+                     Command="{Binding LoginViewModel.LoginCommand}"
+                 FontAttributes="Bold"
+                 FontSize="15" TextColor="White"/>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

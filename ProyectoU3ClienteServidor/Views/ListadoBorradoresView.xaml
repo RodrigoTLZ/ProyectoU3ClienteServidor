@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoU3ClienteServidor.Views.ListadoBorradoresView"
+             Title="Listado de Borradores">
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="regresar.png" Command="{Binding ActividadesViewModel.VerListadoActividadesCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <Grid Margin="0" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.78*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!-- Colección de borradores -->
+        <CollectionView Margin="10" ItemsSource="{Binding ActividadesViewModel.ListadoBorradores}" Grid.Row="1" x:Name="activitiesCollectionView"
+                 SelectionMode="Single"
+                 EmptyView="No hay borradores">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Margin="0" Padding="0">
+                        
+                    
+                    <Frame BackgroundColor="#f2f2f2" BorderColor="#050C9C" Padding="3" Margin="15">
+                        <StackLayout Padding="12" Margin="0,5,0,0" BackgroundColor="#f2f2f2">
+                            <Label Text="{Binding Titulo}" FontSize="18" FontAttributes="Bold" />
+
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Margin="0,20,0,0">
+
+                                <Frame HasShadow="True" BackgroundColor="White" BorderColor="#DFE1DB" CornerRadius="30" HorizontalOptions="Center">
+                                    <StackLayout HorizontalOptions="End" Orientation="Horizontal" HeightRequest="25">
+                                        <ImageButton HeightRequest="20" WidthRequest="20" Source="editar.png" Margin="0,0,5,0"  Command="{Binding Source={x:Reference Name=activitiesCollectionView}, Path=BindingContext.ActividadesViewModel.VerEditarActividadCommand}"
+                             CommandParameter="{Binding Id}"/>
+                                        <Label FontSize="30">|</Label>
+                                        <ImageButton HeightRequest="25" WidthRequest="25" Source="borrar.png" Command="{Binding Source={x:Reference Name=activitiesCollectionView}, Path=BindingContext.ActividadesViewModel.VerEliminarActividadCommand}"
+                             CommandParameter="{Binding Id}"/>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

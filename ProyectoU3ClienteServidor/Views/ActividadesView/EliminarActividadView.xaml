@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoU3ClienteServidor.Views.ActividadesView.EliminarActividadView">
+
+
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
+
+        <Label HorizontalOptions="Center" Margin="0,0,0,10" FontAttributes="Bold" FontFamily="Arial Black" FontSize="35">ADVERTENCIA</Label>
+
+        <Image HeightRequest="200" Source="eliminar.png" Margin="0,0,0,20"></Image>
+
+        <Label WidthRequest="390" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="0,0,0,20">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span FontSize="20" Text="¿Está seguro de eliminar la actividad "/>
+                    <Span FontSize="20" Text="{Binding ActividadesViewModel.ActividadSeleccionada.Titulo}" FontAttributes="Bold" />
+                    <Span FontSize="20" Text="?" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,15,0,0">
+            <Button BackgroundColor="#050C9C" Text="Cancelar" Command="{Binding ActividadesViewModel.CancelarCommand}" FontSize="18" WidthRequest="130" Margin="0,0,25,0"/>
+            <Button BackgroundColor="#050C9C" Text="Eliminar" Command="{Binding ActividadesViewModel.EliminarCommand}" FontSize="18" WidthRequest="130" HeightRequest="55"/>
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>

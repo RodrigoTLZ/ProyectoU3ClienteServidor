@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ProyectoU3ClienteServidor.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ProyectoU3ClienteServidor"
+    xmlns:views="clr-namespace:ProyectoU3ClienteServidor.Views"
+    xmlns:viewsA="clr-namespace:ProyectoU3ClienteServidor.Views.ActividadesView"
+    xmlns:viewsD="clr-namespace:ProyectoU3ClienteServidor.Views.DepartamentosView"
+    xmlns:vm="clr-namespace:ProyectoU3ClienteServidor.ViewModels"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Shell.BackgroundColor="#050C9C"
+    Shell.TabBarBackgroundColor="#050C9C"
+    Shell.TitleColor="White"
+    Shell.TabBarForegroundColor="White"
+    Shell.ForegroundColor="White"
+    Shell.FlyoutItemIsVisible="False"
+    Shell.FlyoutBehavior="Flyout">
+
+    <Shell.BindingContext>
+        <vm:AppShellBindingContext />
+    </Shell.BindingContext>
+
+
+    <ShellContent
+        ContentTemplate="{DataTemplate views:LoginView}" FlyoutItemIsVisible="False"
+        Route="Login" />
+
+
+  
+
+
+    <ShellContent
+        ContentTemplate="{DataTemplate views:ListadoActividadesView}" FlyoutItemIsVisible="False"
+        Route="ListadoActividades" />
+
+    <ShellContent
+        ContentTemplate="{DataTemplate views:ListadoActividadesAdminView}"
+        Route="ListadoActividadesAdmin" FlyoutItemIsVisible="False"/>
+
+    <ShellContent
+        ContentTemplate="{DataTemplate views:AvisoSesionCaducadaView}"
+        Route="SesionCaducada" FlyoutItemIsVisible="False" />
+
+    <ShellContent
+        ContentTemplate="{DataTemplate viewsA:EditarBorradorView}"
+        Route="EditarBorrador" FlyoutItemIsVisible="False" />
+
+    <ShellContent
+        ContentTemplate="{DataTemplate views:AvisoEditarView}"
+        Route="AvisoEditar" FlyoutItemIsVisible="False"/>
+
+    <ShellContent
+        ContentTemplate="{DataTemplate views:ListadoDepartamentosView}"
+        Route="ListadoDepartamentos" FlyoutItemIsVisible="False"/>
+
+    <ShellContent
+        ContentTemplate="{DataTemplate viewsA:AgregarActividadView}"
+        Route="AgregarActividad" FlyoutItemIsVisible="False"/>
+
+    <ShellContent
+        ContentTemplate="{DataTemplate viewsA:EditarActividadView}"
+        Route="EditarActividad" FlyoutItemIsVisible="False"/>
+
+    <ShellContent
+        ContentTemplate="{DataTemplate viewsA:EliminarActividadView}"
+        Route="EliminarActividad" FlyoutItemIsVisible="False"/>
+
+    <ShellContent
+        ContentTemplate="{DataTemplate viewsD:AgregarDepartamentoView}"
+        Route="AgregarDepartamento" FlyoutItemIsVisible="False"/>
+
+    <ShellContent
+        ContentTemplate="{DataTemplate viewsD:EditarDepartamentoView}"
+        Route="EditarDepartamento" FlyoutItemIsVisible="False"/>
+
+    <ShellContent
+        ContentTemplate="{DataTemplate viewsD:EliminarDepartamentoView}"
+        Route="EliminarDepartamento" FlyoutItemIsVisible="False"/>
+
+
+
+        <FlyoutItem Title="Inicio" FlyoutDisplayOptions="AsMultipleItems">
+            <ShellContent Icon="borradores.png"
+    ContentTemplate="{DataTemplate views:ListadoBorradoresView}"
+    Route="ListadoBorradores" Title="Borradores"/>
+        </FlyoutItem>
+    
+    <Shell.FlyoutHeader>
+        <StackLayout>
+            <Image HeightRequest="140" Aspect="Fill" Source="fondo.jpg"></Image>
+            <Label FontSize="40" FontFamily="Arial" FontAttributes="Bold" Margin="20">Más opciones..</Label>
+        </StackLayout>
+    </Shell.FlyoutHeader>
+
+
+    <Shell.FlyoutFooter>
+        <Button BackgroundColor="#050C9C" Command="{Binding ActividadesViewModel.CerrarSesionCommand}" FontSize="18" Margin="20" Text="Cerrar sesión"></Button>
+    </Shell.FlyoutFooter>
+
+   
+
+
+   
+</Shell>

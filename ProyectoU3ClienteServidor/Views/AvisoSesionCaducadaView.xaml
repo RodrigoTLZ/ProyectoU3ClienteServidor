@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoU3ClienteServidor.Views.AvisoSesionCaducadaView"
+             Title="AvisoSesionCaducadaView">
+    <VerticalStackLayout Margin="10" HorizontalOptions="Center" VerticalOptions="Center">
+        <StackLayout HorizontalOptions="Center">
+            <Image HeightRequest="220" Source="advertencia.png"></Image>
+
+            <Label HorizontalOptions="Center" FontAttributes="Bold" FontFamily="Arial Black" FontSize="40">AVISO</Label>
+            <Label
+             Text="Su sesión a caducado, por favor vuelva a iniciar sesión."
+             VerticalOptions="Center" HorizontalTextAlignment="Center" 
+              HorizontalOptions="Center" FontSize="20" WidthRequest="350" Margin="0,20,0,50"/>
+            <Button BackgroundColor="#050C9C" Text="Cerrar sesión" FontSize="18" FontAttributes="Bold" WidthRequest="200" Padding="15" Command="{Binding ActividadesViewModel.CerrarSesionCommand}"></Button>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoU3ClienteServidor.Views.DepartamentosView.AgregarDepartamentoView"
+             Title="Agregar departamento" Background="WhiteSmoke">
+
+    <ScrollView>
+        <StackLayout Margin="10" >
+            <Frame BorderColor="#2B0B98" BackgroundColor="White" CornerRadius="20" HasShadow="True" Padding="10" Margin="5,5">
+                <StackLayout Margin="10">
+                    <Label Text="Nombre del departamento:" FontFamily="Arial" FontAttributes="Bold" FontSize="Large" Margin="0,0,0,10"></Label>
+                    <Entry Text="{Binding DepartamentosViewModel.Departamento.Nombre}" Placeholder="Nombre del departamento" x:Name="titleEntry" Margin="0,0,0,10" FontSize="15"/>
+
+
+                    <Label Text="Correo electrónico:" FontFamily="Arial" FontAttributes="Bold" FontSize="Large" Margin="0,0,0,10"></Label>
+                    <Entry Text="{Binding DepartamentosViewModel.Departamento.Username}" Placeholder="Correo electrónico" x:Name="usernameEntry" FontAttributes="Bold" FontSize="15"/>
+
+                    <Label Text="Contraseña:"  FontFamily="Arial" FontAttributes="Bold" FontSize="Large" Margin="0,0,0,10"></Label>
+                    <Entry Text="{Binding DepartamentosViewModel.Departamento.Password}" Placeholder="Contraseña" x:Name="passwordEntry" FontAttributes="Bold" FontSize="15"/>
+
+                    <Label Text="Seleccione el departamento superior:"  FontFamily="Arial" FontAttributes="Bold" FontSize="Large" Margin="0,0,0,10"></Label>
+                    <Picker ItemsSource="{Binding DepartamentosViewModel.ListadoDepartamentos}" ItemDisplayBinding="{Binding Nombre}" SelectedItem="{Binding DepartamentosViewModel.DepartamentoSuperior, Mode=TwoWay}"></Picker>
+
+                </StackLayout>
+            </Frame>
+
+
+            <Label Text="{Binding DepartamentosViewModel.Error}" TextColor="Red" FontSize="15" Margin="5"></Label>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button BackgroundColor="#050C9C" Text="Cancelar" Margin="5,10" WidthRequest="170" FontSize="18" Command="{Binding DepartamentosViewModel.VerDepartamentosCommand}" HeightRequest="50"/>
+                <Button BackgroundColor="#050C9C" Text="Agregar" Margin="5,10" WidthRequest="170" FontSize="18" Command="{Binding DepartamentosViewModel.AgregarCommand}" HeightRequest="50"/>
+            </StackLayout>
+
+        </StackLayout>
+
+    </ScrollView>
+</ContentPage>

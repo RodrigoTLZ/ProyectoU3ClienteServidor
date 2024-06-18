@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoU3ClienteServidor.Views.ListadoActividadesAdminView" Background="#F6F5F5">
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="depas.png" Command="{Binding DepartamentosViewModel.VerDepartamentosCommand}" />
+        
+    </ContentPage.ToolbarItems>
+
+    <AbsoluteLayout>
+        <Label Grid.Row="0" FontFamily="Avenir Next LT Pro" Margin="15,13,0,0" VerticalOptions="Center" VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="25">Lista de actividades</Label>
+        <!-- Envolver el Grid existente en un AbsoluteLayout -->
+        <Grid Margin="0" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.06*"></RowDefinition>
+                <RowDefinition Height="0.99*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!-- Colección de actividades -->
+            <CollectionView Margin="10" ItemsSource="{Binding ActividadesViewModel.ListadoActividades}" Grid.Row="1" x:Name="activitiesCollectionView"
+                      SelectionMode="Single"
+                      EmptyView="No hay actividades agregadas">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Margin="0" Padding="0">
+                            <Frame HasShadow="True" CornerRadius="10" BackgroundColor="White" BorderColor="#DFE1DB" Padding="5" Margin="5">
+                            <StackLayout Padding="12" Margin="0,5,0,0" BackgroundColor="White">
+
+
+                                    <Label Margin="0,5,0,0" FontFamily="Arial" Text="{Binding Titulo}" FontSize="20" FontAttributes="Bold" />
+                                    <Label Text="{Binding Descripcion}" FontSize="13" MaxLines="3" Margin="0,7,0,10" LineBreakMode="CharacterWrap" LineHeight="1.1" />
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Margin="0,0,5,0" WidthRequest="20" Source="usuario.png"></Image>
+                                        <Label VerticalTextAlignment="Center" VerticalOptions="Center" Text="{Binding NombreDepartamento}" FontSize="13">
+                                        </Label>
+                                    </StackLayout>
+
+                                    <Image HeightRequest="190" WidthRequest="335" Margin="0,15,0,0">
+                                        <Image.Triggers>
+                                            <DataTrigger TargetType="Image" Binding="{Binding ImagenSource}" Value="(null)">
+                                                <Setter Property="IsVisible" Value="False" />
+                                                <Setter Property="HeightRequest" Value="0"/>
+                                                <Setter Property="WidthRequest" Value="0"/>
+                                                <Setter Property="Margin" Value="0"/>
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="Image" Binding="{Binding Imagen}" Value="">
+                                                <Setter Property="IsVisible" Value="False"/>
+                                                <Setter Property="HeightRequest" Value="0"/>
+                                                <Setter Property="WidthRequest" Value="0"/>
+                                                <Setter Property="Margin" Value="0"/>
+                                            </DataTrigger>
+                                        </Image.Triggers>
+                                        <Image.Source>
+                                            <Binding Path="ImagenSource" />
+                                        </Image.Source>
+                                    </Image>
+
+                                    
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Margin="0,20,0,0">
+                                    <Label HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalTextAlignment="Center" Text="{Binding FechaRealizacion, StringFormat='{0:dd/MM/yyyy}'}"/>
+                                        <Frame HasShadow="True" BackgroundColor="White" BorderColor="#DFE1DB" CornerRadius="30" HorizontalOptions="EndAndExpand">
+                                            <StackLayout HorizontalOptions="End" Orientation="Horizontal" HeightRequest="25">
+                                                <ImageButton HeightRequest="20" WidthRequest="20" Source="editar.png" Margin="0,0,5,0" Command="{Binding Source={x:Reference Name=activitiesCollectionView}, Path=BindingContext.ActividadesViewModel.VerEditarActividadCommand}"
+                                        CommandParameter="{Binding Id}" />
+                                                <Label FontSize="30">|</Label>
+                                                <ImageButton HeightRequest="25" WidthRequest="25" Source="borrar.png"  Command="{Binding Source={x:Reference Name=activitiesCollectionView}, Path=BindingContext.ActividadesViewModel.VerEliminarActividadCommand}"
+                                           CommandParameter="{Binding Id}" />
+                                        </StackLayout>
+                                        </Frame>
+
+                                    </StackLayout>
+                                </StackLayout>
+                        </Frame>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+        <!-- Botón flotante -->
+        <Button Text="+" Command="{Binding ActividadesViewModel.NuevoCommand}"
+        AbsoluteLayout.LayoutBounds="0.5,1,AutoSize,AutoSize"
+        AbsoluteLayout.LayoutFlags="PositionProportional"
+        BackgroundColor="#050C9C"
+        TextColor="White"
+        CornerRadius="30"
+        WidthRequest="60"
+        FontSize="35"
+        HeightRequest="60"
+        VerticalOptions="End"
+        HorizontalOptions="Center"
+        Margin="0,0,0,25"
+        Padding="0" />
+    </AbsoluteLayout>
+</ContentPage>

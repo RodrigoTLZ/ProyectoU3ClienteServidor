@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoU3ClienteServidor.Views.DepartamentosView.EditarDepartamentoView"
+             Title="Editar departamento" Background="WhiteSmoke">
+
+
+    <ScrollView>
+        <StackLayout Margin="10">
+            <Frame BorderColor="#2B0B98" BackgroundColor="White" CornerRadius="20" HasShadow="True" Padding="10" Margin="5,5">
+                <StackLayout Margin="10">
+                    <Label Text="Nombre del departamento:" FontFamily="Arial" FontAttributes="Bold" FontSize="Large" Margin="0,0,0,10"></Label>
+                    <Entry Text="{Binding DepartamentosViewModel.DepartamentoSeleccionado.Nombre}" Placeholder="Nombre del departamento" x:Name="titleEntry"  Margin="0,0,0,10" FontSize="15"/>
+
+
+                    <Label Text="Correo electrónico:" FontFamily="Arial" FontAttributes="Bold" FontSize="Large" Margin="0,0,0,10"></Label>
+                    <Entry Text="{Binding DepartamentosViewModel.DepartamentoSeleccionado.Username}" Placeholder="Correo electrónico" x:Name="usernameEntry" FontSize="15"/>
+
+                    <Label Text="Seleccione el departamento superior:"  FontFamily="Arial" FontAttributes="Bold" FontSize="Large" Margin="0,0,0,10"></Label>
+
+                    <Picker x:Name="Mypicker" ItemsSource="{Binding DepartamentosViewModel.ListadoDepartamentos}" 
+                            ItemDisplayBinding="{Binding Nombre}" 
+                            SelectedItem="{Binding DepartamentosViewModel.DepartamentoSuperior}" />
+
+                </StackLayout>
+            </Frame>
+
+
+            <Label Text="{Binding DepartamentoViewModel.Error}" TextColor="Red" FontSize="15" Margin="5"></Label>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button BackgroundColor="#050C9C" Text="Cancelar" Margin="5,10" WidthRequest="170" FontSize="18" Command="{Binding ActividadesViewModel.CancelarCommand}" HeightRequest="50"/>
+                <Button BackgroundColor="#050C9C" Text="Guardar" Margin="5,10" WidthRequest="170" FontSize="18" Command="{Binding DepartamentosViewModel.EditarCommand}" HeightRequest="50"/>
+            </StackLayout>
+
+        </StackLayout>
+
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoU3ClienteServidor.Views.ListadoDepartamentosView"
+             xmlns:vm="clr-namespace:ProyectoU3ClienteServidor.ViewModels"
+             Title="Lista de Departamentos">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="regresar.png" Command="{Binding ActividadesViewModel.VerListadoActividadesCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <AbsoluteLayout>
+        <!-- Envolver el Grid existente en un AbsoluteLayout -->
+        <Grid Margin="0" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.78*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+
+            <!-- Colección de departamentos -->
+            <CollectionView Margin="10" ItemsSource="{Binding DepartamentosViewModel.ListadoDepartamentos}" Grid.Row="1" x:Name="departamentosCollectionView"
+                 SelectionMode="Single"
+                 EmptyView="No hay departamentos agregados">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Margin="0" Padding="0">
+                            <Frame BackgroundColor="#f2f2f2" BorderColor="#050C9C" Padding="3" Margin="15">
+                            <StackLayout Padding="12" Margin="0,5,0,0" BackgroundColor="#f2f2f2">
+                                <Label Text="{Binding Nombre}" FontFamily="Arial" FontSize="20" FontAttributes="Bold" />
+
+
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Margin="0,20,0,0">
+                                    <Frame HasShadow="True" BackgroundColor="White" BorderColor="#DFE1DB" CornerRadius="30" HorizontalOptions="Center">
+                                        <StackLayout HorizontalOptions="End" Orientation="Horizontal" HeightRequest="25">
+                                            <ImageButton HeightRequest="20" WidthRequest="20" Source="editar.png" Margin="0,0,5,0"  Command="{Binding Source={x:Reference Name=departamentosCollectionView}, Path=BindingContext.DepartamentosViewModel.VerEditarDepartamentoCommand}"
+                                                CommandParameter="{Binding Id}"/>
+                                            <Label FontSize="30">|</Label>
+                                            <ImageButton HeightRequest="25" WidthRequest="25" Source="borrar.png"  Command="{Binding Source={x:Reference Name=departamentosCollectionView}, Path=BindingContext.DepartamentosViewModel.VerEliminarDepartamentoCommand}"
+                                                CommandParameter="{Binding Id}" />
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+
+
+        <Button Text="+" Command="{Binding DepartamentosViewModel.NuevoCommand}"
+AbsoluteLayout.LayoutBounds="0.5,1,AutoSize,AutoSize"
+AbsoluteLayout.LayoutFlags="PositionProportional"
+BackgroundColor="#050C9C"
+TextColor="White"
+CornerRadius="30"
+WidthRequest="60"
+FontSize="35"
+HeightRequest="60"
+VerticalOptions="End"
+HorizontalOptions="Center"
+Margin="0,0,0,25"
+Padding="0" />
+    </AbsoluteLayout>
+</ContentPage>
